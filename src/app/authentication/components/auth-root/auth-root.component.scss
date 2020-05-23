@@ -1,0 +1,13 @@
+.auth-root {
+  &-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: #303030;
+  }
+
+  &-container {
+    margin: auto;
+    width: 500px;
+    padding-top: 200px;
+  }
+}
