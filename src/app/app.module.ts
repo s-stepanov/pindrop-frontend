@@ -12,6 +12,7 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { faRecordVinyl } from '@fortawesome/free-solid-svg-icons';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { SearchModule } from './search/search.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, RootComponent],
@@ -24,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatButtonModule,
     FontAwesomeModule,
+    SearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

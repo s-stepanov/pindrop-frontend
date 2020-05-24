@@ -1,0 +1,14 @@
+<nav class="pindrop-header">
+  <div class="pindrop-header-inner">
+    <div class="pindrop-logo-container">
+      <a routerLink="/"><fa-icon class="logo" size="2x" [icon]="['fas', 'record-vinyl']"></fa-icon> PINDROP</a>
+    </div>
+    <div class="pindrop-user">
+      <button mat-button [matMenuTriggerFor]="userMenu">{{ (currentUser | async)?.nickname }}</button>
+    </div>
+  </div>
+</nav>
+
+<mat-menu #userMenu>
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
