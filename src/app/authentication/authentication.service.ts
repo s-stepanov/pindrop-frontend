@@ -24,10 +24,12 @@ export class AuthenticationService {
   private _isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   get currentUserInfo(): Observable<UserInfo> {
+    this._currentUserInfo.next(JSON.parse(localStorage.getItem('access_token')));
     return this._currentUserInfo.asObservable();
   }
 
   get isAuthenticated(): Observable<boolean> {
+    this._isAuthenticated.next(Boolean(localStorage.getItem('access_token')));
     return this._isAuthenticated.asObservable();
   }
 
