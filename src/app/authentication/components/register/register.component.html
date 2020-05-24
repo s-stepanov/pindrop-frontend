@@ -4,30 +4,37 @@
   </mat-card-header>
 
   <mat-card-content>
-    <form class="register-form">
+    <form class="register-form" [formGroup]="form">
       <mat-form-field class="full-width">
         <mat-label>Email</mat-label>
-        <input matInput />
+        <input [formControlName]="'email'" matInput />
+        <mat-error *ngIf="form.get('email').invalid">{{ 'Enter a valid email' }}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
         <mat-label>Nickname</mat-label>
-        <input type="text" matInput />
+        <input type="text" matInput [formControlName]="'nickname'" />
+        <mat-error *ngIf="form.get('nickname').invalid">{{ 'Nickname is required' }}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
         <mat-label>Password</mat-label>
-        <input type="password" matInput />
+        <input type="password" matInput [formControlName]="'password'" />
+        <mat-error *ngIf="form.get('password').invalid">{{ 'Password must ve at least 6 symbols long' }}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
         <mat-label>Confirm Password</mat-label>
-        <input type="password" matInput />
+        <input type="password" matInput [formControlName]="'passwordConfirmation'" />
+        <mat-error *ngIf="form.get('passwordConfirmation').invalid">{{ "Passwords don't match" }}</mat-error>
       </mat-form-field>
     </form>
+    <mat-error *ngIf="serverMessage.length">
+      {{ serverMessage }}
+    </mat-error>
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-raised-button color="primary">Register</button>
+    <button (click)="onSubmit()" mat-raised-button color="primary">Register</button>
   </mat-card-actions>
 </mat-card>

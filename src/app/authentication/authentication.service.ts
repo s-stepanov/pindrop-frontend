@@ -21,16 +21,30 @@ export interface TokenResponse {
 })
 export class AuthenticationService {
   private _currentUserInfo: BehaviorSubject<UserInfo> = new BehaviorSubject<UserInfo>(null);
+  private _isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   get currentUserInfo(): Observable<UserInfo> {
     return this._currentUserInfo.asObservable();
   }
 
+  get isAuthenticated(): Observable<boolean> {
+    return this._isAuthenticated.asObservable();
+  }
+
   constructor(private http: HttpClient) {}
 
   public sendLoginRequest(loginRequest: LoginRequestDto): Observable<TokenResponse> {
-    return this.http
-      .post<TokenResponse>(`${environment.apiUrl}/auth/login`, loginRequest)
-      .pipe(tap((data) => this._currentUserInfo.next(JSON.parse(atob(data.access_token.split('.')[1])))));
+    return this.http.post<TokenResponse>(`${environment.apiUrl}/auth/login`, loginRequest).pipe(
+      tap((data) => {
+        const tokenData = JSON.parse(atob(data.access_token.split('.')[1]));
+        localStorage.setItem('access_token', JSON.stringify(tokenData));
+        this._currentUserInfo.next(tokenData);
+        this._isAuthenticated.next(Boolean(tokenData));
+      }),
+    );
+  }
+
+  public logout(): void {
+    localStorage.removeItem('access_token');
   }
 }

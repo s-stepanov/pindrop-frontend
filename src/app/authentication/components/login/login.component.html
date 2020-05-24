@@ -8,13 +8,18 @@
       <mat-form-field class="full-width">
         <mat-label>Email</mat-label>
         <input [formControlName]="'email'" matInput />
+        <mat-error *ngIf="form.get('email').invalid">{{ 'Enter a valid email' }}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
         <mat-label>Password</mat-label>
         <input type="password" [formControlName]="'password'" matInput />
+        <mat-error *ngIf="form.get('password').invalid">{{ 'Password is required' }}</mat-error>
       </mat-form-field>
     </form>
+    <mat-error *ngIf="serverResponse.length">
+      {{ serverResponse }}
+    </mat-error>
   </mat-card-content>
 
   <mat-card-actions>
