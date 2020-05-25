@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { SearchService } from '../search.service';
 import { take } from 'rxjs/operators';
+import { SearchType } from '../types/search-types';
 
 @Component({
   selector: 'pindrop-search-bar',
@@ -10,11 +11,8 @@ import { take } from 'rxjs/operators';
 })
 export class SearchBarComponent implements OnInit {
   public form: FormControl;
-  searchTypes = {
-    ALBUM: 'By Album',
-    ARTIST: 'By Artist',
-  };
-  selectedSearchType = this.searchTypes.ARTIST;
+  searchTypes = SearchType;
+  selectedSearchType = SearchType.ARTIST;
 
   constructor(private fb: FormBuilder, private searchService: SearchService) {}
 
@@ -29,5 +27,9 @@ export class SearchBarComponent implements OnInit {
     } else {
       this.searchService.searchAlbums(this.form.value, 1).pipe(take(1)).subscribe();
     }
+  }
+
+  onSearchTypeSelect(type: SearchType): void {
+    this.searchService.setSearchType(type);
   }
 }

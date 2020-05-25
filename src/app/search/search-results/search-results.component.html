@@ -1,0 +1,5 @@
+<div class="search-results">
+  <ng-container *ngFor="let result of (searchResults$ | async)?.matches">
+    <pindrop-search-result-item [searchResult]="result"></pindrop-search-result-item>
+  </ng-container>
+</div>

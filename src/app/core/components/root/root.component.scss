@@ -2,6 +2,6 @@
   display: block;
   padding-top: 52px;
   background-color: #303030;
-  height: calc(100vh - 52px);
+  min-height: calc(100vh - 52px);
   width: 100%;
 }

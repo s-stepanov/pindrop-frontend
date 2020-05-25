@@ -1,0 +1,15 @@
+<mat-card class="search-result-item">
+  <ng-container>
+    <mat-card-header>
+      <div
+        mat-card-avatar
+        class="header-image"
+        [ngStyle]="{ backgroundImage: 'url(' + searchResult.image[0].url + ')' }"
+      ></div>
+      <mat-card-title>{{ searchResult.name }}</mat-card-title>
+      <mat-card-subtitle> Listeners: {{ searchResult.listeners }} </mat-card-subtitle>
+    </mat-card-header>
+  </ng-container>
+</mat-card>
+
+<ng-template #albumTemplate></ng-template>

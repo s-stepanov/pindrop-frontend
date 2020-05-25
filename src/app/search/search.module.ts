@@ -6,11 +6,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchResultItemComponent } from './search-result-item/search-result-item.component';
 
 @NgModule({
-  declarations: [SearchBarComponent],
+  declarations: [SearchBarComponent, SearchResultsComponent, SearchResultItemComponent],
   imports: [
     CommonModule,
     MatInputModule,
@@ -18,9 +21,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
+    MatCardModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [SearchBarComponent, MatInputModule],
+  exports: [SearchBarComponent, SearchResultsComponent, MatInputModule],
 })
 export class SearchModule {}

@@ -5,15 +5,17 @@ import { SearchResponse } from './types/search-response';
 import { ArtistSearch } from './types/artist';
 import { tap } from 'rxjs/operators';
 import { AlbumSearch } from './types/album';
+import { SearchType } from './types/search-types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchService {
   private _searchResults: BehaviorSubject<SearchResponse<ArtistSearch | AlbumSearch>> = new BehaviorSubject(null);
+  private _currentSearchType: BehaviorSubject<SearchType> = new BehaviorSubject(SearchType.ARTIST);
 
-  get searchResults(): Observable<SearchResponse<ArtistSearch | AlbumSearch>> {
-    return this._searchResults.asObservable();
+  get currentSearchType$(): Observable<SearchType> {
+    return this._currentSearchType.asObservable();
   }
 
   constructor(private apiService: ApiService) {}
@@ -36,5 +38,13 @@ export class SearchService {
         limit,
       })
       .pipe(tap((data: SearchResponse<AlbumSearch>) => this._searchResults.next(data)));
+  }
+
+  public setSearchType(type: SearchType): void {
+    this._currentSearchType.next(type);
+  }
+
+  public getSearchResults(): Observable<SearchResponse<ArtistSearch | AlbumSearch>> {
+    return this._searchResults.asObservable();
   }
 }

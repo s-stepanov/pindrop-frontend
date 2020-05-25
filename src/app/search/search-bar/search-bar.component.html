@@ -8,9 +8,9 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Search By</mat-label>
-    <mat-select [(value)]="selectedSearchType">
-      <mat-option [value]="searchTypes.ARTIST">By Artist</mat-option>
-      <mat-option [value]="searchTypes.ALBUM">By Album</mat-option>
+    <mat-select [(value)]="selectedSearchType" (valueChange)="onSearchTypeSelect($event)">
+      <mat-option [value]="searchTypes.ARTIST">{{ searchTypes.ARTIST }}</mat-option>
+      <mat-option [value]="searchTypes.ALBUM">{{ searchTypes.ALBUM }}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>
