@@ -6,6 +6,8 @@ export interface Album {
   mbid: string;
   releaseDate: string;
   playCount: number;
+  wiki: any;
+  image: Image[];
   listeners: number;
   topTags: Array<Tag>;
   tracks: Array<Track>;

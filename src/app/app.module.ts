@@ -12,10 +12,14 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { faRecordVinyl } from '@fortawesome/free-solid-svg-icons';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { SearchModule } from './search/search.module';
+import { ArtistInfoComponent } from './core/components/artist-info/artist-info.component';
+import { ReleaseInfoComponent } from './core/components/release-info/release-info.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, RootComponent],
+  declarations: [AppComponent, HeaderComponent, RootComponent, ArtistInfoComponent, ReleaseInfoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,7 +28,9 @@ import { SearchModule } from './search/search.module';
     HttpClientModule,
     MatMenuModule,
     MatButtonModule,
+    MatExpansionModule,
     FontAwesomeModule,
+    MatCardModule,
     SearchModule,
   ],
   providers: [],

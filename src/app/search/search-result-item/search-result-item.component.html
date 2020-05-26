@@ -1,7 +1,8 @@
-<mat-card class="search-result-item">
+<mat-card (click)="navigateToInfoPage()" class="search-result-item">
   <ng-container>
     <mat-card-header>
       <div
+        *ngIf="currentSearchType === searchType.ALBUM"
         mat-card-avatar
         class="header-image"
         [ngStyle]="{ backgroundImage: 'url(' + searchResult.image[0].url + ')' }"

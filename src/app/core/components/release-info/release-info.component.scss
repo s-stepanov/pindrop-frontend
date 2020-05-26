@@ -1,0 +1,23 @@
+.release-info {
+  width: 70vw;
+  margin: 30px auto;
+
+  &__cover {
+    height: 174px;
+    width: 174px;
+
+    img {
+      display: block;
+      border-radius: 50%;
+    }
+  }
+
+  .release-info__content {
+    display: flex;
+    padding: 16px;
+  }
+
+  &__metadata {
+    min-width: 174px;
+  }
+}

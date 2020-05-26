@@ -13,8 +13,14 @@
     flex-wrap: wrap;
     align-items: center;
 
-    .pindrop-user {
+    .search-link {
       margin-left: auto;
+      margin-right: 20px;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
     }
 
     .pindrop-logo-container {

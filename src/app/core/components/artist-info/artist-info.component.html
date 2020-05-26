@@ -1,0 +1,43 @@
+<mat-card class="artist-info">
+  <mat-card-header>
+    <mat-card-title>
+      {{ (artistInfo$ | async)?.name }}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-expansion-panel #panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Artist Info
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ !panel.expanded ? 'Click to expand' : 'Click to collapse' }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="artist-info-content">
+        <div class="artist-info-content__bio">
+          {{ (artistInfo$ | async)?.bio.content }}
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-card-content>
+</mat-card>
+<mat-card class="artist-releases">
+  <mat-card-header>
+    <mat-card-title>
+      Releases
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="artist-releases__grid">
+      <ng-container *ngFor="let release of (artistInfo$ | async)?.albums">
+        <div class="release">
+          <div class="release__cover-art">
+            <img [routerLink]="'/releases/' + release.mbid" class="release__title" [src]="release.image[2].url" />
+          </div>
+          <a [routerLink]="'/releases/' + release.mbid" class="release__title">{{ release.name }}</a>
+        </div>
+      </ng-container>
+    </div>
+  </mat-card-content>
+</mat-card>

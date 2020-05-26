@@ -11,9 +11,10 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchResultItemComponent } from './search-result-item/search-result-item.component';
+import { SearchComponent } from './search.component';
 
 @NgModule({
-  declarations: [SearchBarComponent, SearchResultsComponent, SearchResultItemComponent],
+  declarations: [SearchBarComponent, SearchResultsComponent, SearchResultItemComponent, SearchComponent],
   imports: [
     CommonModule,
     MatInputModule,

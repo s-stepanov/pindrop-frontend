@@ -3,6 +3,9 @@
     <div class="pindrop-logo-container">
       <a routerLink="/"><fa-icon class="logo" size="2x" [icon]="['fas', 'record-vinyl']"></fa-icon> PINDROP</a>
     </div>
+    <div class="search-link">
+      <a routerLink="/search">Search</a>
+    </div>
     <div class="pindrop-user">
       <button mat-button [matMenuTriggerFor]="userMenu">{{ (currentUser | async)?.nickname }}</button>
     </div>
