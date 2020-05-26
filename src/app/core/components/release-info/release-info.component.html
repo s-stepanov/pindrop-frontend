@@ -9,13 +9,22 @@
     <mat-card-subtitle>{{ releaseInfo?.artist }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <div class="release-info__content">
-      <div class="release-info__metadata">
-        <p>{{ releaseInfo?.releaseDate }}</p>
+    <mat-expansion-panel #panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Release Info</mat-panel-title>
+        <mat-panel-description>
+          {{ !panel.expanded ? 'Click to expand' : 'Click to collapse' }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="release-info__content">
+        <div class="release-info__metadata">
+          <p>{{ releaseInfo?.releaseDate }}</p>
+        </div>
+        <div class="release-info__wiki">
+          {{ releaseInfo?.wiki?.content }}
+        </div>
       </div>
-      <div class="release-info__wiki">
-        {{ releaseInfo?.wiki?.content }}
-      </div>
-    </div>
+    </mat-expansion-panel>
   </mat-card-content>
 </mat-card>
+<pindrop-review-form [mbid]="releaseInfo?.mbid"></pindrop-review-form>

@@ -13,6 +13,7 @@ import { tap, switchMap } from 'rxjs/operators';
 export class ReleaseInfoComponent implements OnInit {
   @Input() mbid: string;
 
+  reviewFormShown: boolean = false;
   releaseInfo: Album;
   routerSubscription = new Subscription();
 

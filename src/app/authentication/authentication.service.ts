@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 
 export interface UserInfo {
-  id: string;
+  sub: string;
   email: string;
   nickname: string;
   role: string;

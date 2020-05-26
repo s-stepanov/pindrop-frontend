@@ -1,0 +1,25 @@
+<mat-expansion-panel class="review-form-container">
+  <mat-expansion-panel-header>
+    Write a Review
+  </mat-expansion-panel-header>
+  <div>
+    <mat-label class="label">Your Rating:</mat-label>
+
+    <bar-rating [theme]="'stars'" [(rate)]="selectedRating" [max]="10"></bar-rating>
+  </div>
+  <form class="review-form">
+    <mat-form-field class="full-width">
+      <mat-label class="label">Your Review:</mat-label>
+      <textarea
+        [formControl]="reviewTextarea"
+        class="review-form__textarea"
+        matInput
+        #message
+        maxlength="3000"
+        placeholder="Enter review text..."
+      ></textarea>
+      <mat-hint align="end">{{ message.value.length }} / 3000</mat-hint>
+    </mat-form-field>
+  </form>
+  <button (click)="onSubmit()" [disabled]="isSubmitDisabled()" mat-raised-button color="primary">Submit Review</button>
+</mat-expansion-panel>

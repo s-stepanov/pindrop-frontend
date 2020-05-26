@@ -1,0 +1,14 @@
+.review-form-container {
+  width: 70vw;
+  margin: auto;
+
+  .label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .review-form {
+    &__textarea {
+      height: 375px;
+    }
+  }
+}
