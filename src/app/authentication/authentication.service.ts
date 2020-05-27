@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 
 export interface UserInfo {
-  sub: string;
+  id: string;
   email: string;
   nickname: string;
   role: string;
@@ -43,7 +43,9 @@ export class AuthenticationService {
     return this.http.post<TokenResponse>(`${environment.apiUrl}/auth/login`, loginRequest).pipe(
       tap((data) => {
         const tokenData = JSON.parse(atob(data.access_token.split('.')[1]));
-        localStorage.setItem('user_info', JSON.stringify(tokenData));
+        const renamed = ({ sub, ...object }) => ({ id: sub, ...object });
+
+        localStorage.setItem('user_info', JSON.stringify(renamed(tokenData)));
         localStorage.setItem('access_token', data.access_token);
         this._currentUserInfo.next(tokenData);
         this._isAuthenticated.next(Boolean(tokenData));

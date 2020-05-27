@@ -1,4 +1,4 @@
-<mat-expansion-panel class="review-form-container">
+<mat-expansion-panel [expanded]="formExpanded" (click)="formExpanded = true" class="review-form-container">
   <mat-expansion-panel-header>
     Write a Review
   </mat-expansion-panel-header>

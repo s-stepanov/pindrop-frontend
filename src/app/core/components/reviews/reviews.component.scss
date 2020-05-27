@@ -1,0 +1,59 @@
+.top-reviews {
+  width: 70vw;
+  margin: 60px auto;
+  color: white;
+
+  &-header {
+    display: flex;
+
+    &__controls {
+      margin-left: auto;
+
+      .sort-toggle {
+        display: inline-block;
+        line-height: 40px;
+        width: 200px;
+        margin-right: 20px;
+      }
+    }
+
+    .show-all {
+      cursor: pointer;
+      margin-left: 20px;
+    }
+  }
+}
+
+.review-container {
+  display: flex;
+
+  .voter {
+    min-width: 50px;
+    padding-top: 16px;
+    margin-right: 10px;
+
+    &__button {
+      display: block;
+    }
+
+    &__rating {
+      display: block;
+      text-align: center;
+      margin: 10px 10px 10px 0;
+    }
+  }
+
+  .review {
+    margin-bottom: 20px;
+    flex: 1;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .author-filter {
+      cursor: pointer;
+    }
+  }
+}

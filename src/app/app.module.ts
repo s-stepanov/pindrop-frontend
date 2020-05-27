@@ -20,6 +20,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ReviewFormComponent } from './core/components/review-form/review-form.component';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReviewsComponent } from './core/components/reviews/reviews.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ArtistInfoComponent,
     ReleaseInfoComponent,
     ReviewFormComponent,
+    ReviewsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     SearchModule,
     BarRatingModule,
     ReactiveFormsModule,
+    MatSlideToggleModule,
     FormsModule,
   ],
   providers: [],

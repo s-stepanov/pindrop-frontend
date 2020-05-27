@@ -1,0 +1,60 @@
+<div class="top-reviews" *ngIf="(reviews$ | async).length">
+  <div class="top-reviews-header">
+    <h2>Reviews {{ (authorFilter$ | async) ? 'By ' + (authorFilter$ | async).nickname + ' ' : '' }}</h2>
+    <h2 (click)="setAuthorFilter(null)" *ngIf="authorFilter$ | async" class="show-all">Show All</h2>
+    <div class="top-reviews-header__controls">
+      <div class="sort-toggle">
+        <mat-slide-toggle (change)="hideBadRatingReviews($event)">Hide Bad Rating Reviews</mat-slide-toggle>
+      </div>
+      <div class="sort-toggle">
+        <mat-slide-toggle (change)="onSortChange($event)">Sort By Rating</mat-slide-toggle>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngFor="let review of reviews$ | async">
+    <div class="review-container">
+      <div class="voter">
+        <button
+          [disabled]="!review?.canUpvote"
+          (click)="vote({ id: review?.id, type: VotingTypes.UPVOTE })"
+          mat-mini-fab
+          color="accent"
+          class="voter__button"
+        >
+          +
+        </button>
+        <div class="voter__rating">{{ review?.rating }}</div>
+        <button
+          [disabled]="!review?.canDownvote"
+          (click)="vote({ id: review?.id, type: VotingTypes.DOWNVOTE })"
+          mat-mini-fab
+          color="accent"
+          class="voter__button"
+        >
+          -
+        </button>
+      </div>
+      <mat-card class="review">
+        <mat-card-header>
+          <img class="review__cover-art" mat-card-avatar [src]="review?.releaseMetadata?.coverArt" />
+
+          <mat-card-title
+            ><a [routerLink]="'/releases/' + review?.releaseMetadata?.mbid"
+              >{{ review?.releaseMetadata?.artistName }} - {{ review?.releaseMetadata?.albumName }}</a
+            ></mat-card-title
+          >
+          <mat-card-subtitle
+            ><a class="author-filter" (click)="setAuthorFilter(review.author)"
+              >By {{ review?.author.nickname }} on {{ review?.createdDate | date }}</a
+            ></mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-content>
+          <bar-rating [theme]="'stars'" [rate]="review?.releaseScore" [readOnly]="true" [max]="10"></bar-rating>
+          {{ review?.content }}
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
+</div>

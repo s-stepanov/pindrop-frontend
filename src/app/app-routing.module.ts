@@ -6,6 +6,7 @@ import { RootComponent } from './core/components/root/root.component';
 import { ReleaseInfoComponent } from './core/components/release-info/release-info.component';
 import { ArtistInfoComponent } from './core/components/artist-info/artist-info.component';
 import { SearchComponent } from './search/search.component';
+import { ReviewsComponent } from './core/components/reviews/reviews.component';
 
 const routes: Routes = [
   { path: 'login', component: AuthRootComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
     component: RootComponent,
     canActivate: [AuthGuard],
     children: [
+      { path: '', component: ReviewsComponent },
       { path: 'search', component: SearchComponent },
       { path: 'releases/:releaseId', component: ReleaseInfoComponent },
       { path: 'artists/:artistId', component: ArtistInfoComponent },

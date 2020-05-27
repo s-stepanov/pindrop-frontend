@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ReviewsService } from '../../services/reviews.service';
 import { take } from 'rxjs/operators';
@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
 export class ReviewFormComponent implements OnInit, OnDestroy {
   @Input() mbid: string;
   selectedRating: number = 0;
+
+  formExpanded = false;
 
   reviewTextarea: FormControl;
 
@@ -37,9 +39,13 @@ export class ReviewFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.reviewsService
-      .createReview(this.mbid, this.userInfo.sub, this.reviewTextarea.value, this.selectedRating)
+      .createReview(this.mbid, this.userInfo.id, this.reviewTextarea.value, this.selectedRating)
       .pipe(take(1))
-      .subscribe();
+      .subscribe(() => {
+        this.reviewTextarea.setValue('');
+        this.formExpanded = false;
+        this.selectedRating = 0;
+      });
   }
 
   ngOnDestroy() {
