@@ -9,7 +9,9 @@ export interface UserInfo {
   id: string;
   email: string;
   nickname: string;
-  role: string;
+  roles: Array<{
+    name: string;
+  }>;
 }
 
 export interface TokenResponse {

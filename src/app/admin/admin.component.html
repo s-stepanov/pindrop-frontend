@@ -1,0 +1,58 @@
+<div class="admin-page-wrapper">
+  <mat-tab-group [dynamicHeight]="true">
+    <mat-tab label="Users">
+      <table mat-table [dataSource]="usersDataSource" class="table">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="nickname">
+          <th mat-header-cell *matHeaderCellDef>Nickname</th>
+          <td mat-cell *matCellDef="let element">{{ element.nickname }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="active">
+          <th mat-header-cell *matHeaderCellDef>Account Active</th>
+          <td mat-cell *matCellDef="let element">{{ element.accountActive }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="usersColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: usersColumns"></tr>
+      </table>
+    </mat-tab>
+    <mat-tab label="Reviews">
+      <table mat-table [dataSource]="reviewsDataSource" class="table">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="authorNickname">
+          <th mat-header-cell *matHeaderCellDef>Author</th>
+          <td mat-cell *matCellDef="let element">{{ element.author?.nickname }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="release">
+          <th mat-header-cell *matHeaderCellDef>Release</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.releaseMetadata.artistName }} - {{ element.releaseMetadata.albumName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdDate">
+          <th mat-header-cell *matHeaderCellDef>Creation Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.createdDate | date }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="reviewsColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: reviewsColumns"></tr>
+      </table>
+    </mat-tab>
+  </mat-tab-group>
+</div>

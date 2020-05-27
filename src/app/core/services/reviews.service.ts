@@ -26,7 +26,7 @@ export class ReviewsService {
       .pipe(tap((data: Review) => this.reviews$.next([data, ...this.reviews$.value])));
   }
 
-  public getReviews(ratingSort: boolean, authorId: string, releaseMbid: string, page = 0): Observable<Review[]> {
+  public getReviews(ratingSort: boolean, authorId?: string, releaseMbid?: string, page = 0): Observable<Review[]> {
     return this.apiService
       .get('/reviews', {
         page,

@@ -7,6 +7,7 @@ import { ReleaseInfoComponent } from './core/components/release-info/release-inf
 import { ArtistInfoComponent } from './core/components/artist-info/artist-info.component';
 import { SearchComponent } from './search/search.component';
 import { ReviewsComponent } from './core/components/reviews/reviews.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   { path: 'login', component: AuthRootComponent },
@@ -21,6 +22,11 @@ const routes: Routes = [
       { path: 'releases/:releaseId', component: ReleaseInfoComponent },
       { path: 'artists/:artistId', component: ArtistInfoComponent },
     ],
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AuthGuard, AdminGuard],
   },
 ];
 
