@@ -17,8 +17,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   usersDataSource: UserInfo[];
   reviewsDataSource: Review[];
 
-  usersColumns: string[] = ['id', 'email', 'nickname', 'active', 'action'];
-  reviewsColumns: string[] = ['id', 'authorNickname', 'release', 'createdDate', 'action'];
+  usersColumns: string[] = ['id', 'email', 'nickname', 'active', 'action', 'delete'];
+  reviewsColumns: string[] = ['id', 'authorNickname', 'release', 'createdDate', 'action', 'delete'];
 
   usersSubscription: Subscription = new Subscription();
   reviewsSubscription: Subscription = new Subscription();
@@ -52,4 +52,8 @@ export class AdminComponent implements OnInit, OnDestroy {
       height: '500px',
     });
   }
+
+  deleteReview(review: Review): void {}
+
+  deleteUser(user: UserInfo): void {}
 }
