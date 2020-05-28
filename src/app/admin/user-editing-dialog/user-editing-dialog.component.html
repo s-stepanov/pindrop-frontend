@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Edit User</h1>
+<div mat-dialog-content>
+  <form class="register-form" [formGroup]="form">
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input [formControlName]="'email'" matInput />
+      <mat-error *ngIf="form.get('email').invalid">{{ 'Enter a valid email' }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Nickname</mat-label>
+      <input type="text" matInput [formControlName]="'nickname'" />
+      <mat-error *ngIf="form.get('nickname').invalid">{{ 'Nickname is required' }}</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<button mat-raised-button color="primary">Save</button>
